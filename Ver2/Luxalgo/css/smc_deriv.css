@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
+    color: #e4e4e7;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: #a1a1aa;
+    font-size: 1rem;
+}
+
+.controls,
+.smc-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.control-group {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.smc-controls label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+select,
+input[type="datetime-local"],
+input[type="number"] {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #e4e4e7;
+    font-size: 0.9rem;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #089981 0%, #0ca678 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e4e4e7;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #F23645 0%, #dc2626 100%);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.chart-container {
+    background: rgba(26, 26, 46, 0.8);
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+}
+
+#chart {
+    width: 100%;
+    height: 450px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.status {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.status.success {
+    color: #089981;
+}
+
+.status.error {
+    color: #F23645;
+}
+
+.status.loading {
+    color: #667eea;
+}
+
+.info-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-card h3 {
+    font-size: 0.85rem;
+    color: #a1a1aa;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.info-value {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.info-value.bullish {
+    color: #089981;
+}
+
+.info-value.bearish {
+    color: #F23645;
+}
+
+.info-value.neutral {
+    color: #787B86;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin: 2px;
+}
+
+.badge.bullish {
+    background: rgba(8, 153, 129, 0.2);
+    color: #089981;
+}
+
+.badge.bearish {
+    background: rgba(242, 54, 69, 0.2);
+    color: #F23645;
+}
+
+/* Analysis Hint Section */
+.analysis-hint {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.hint-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hint-icon {
+    font-size: 1.5rem;
+}
+
+.hint-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hint-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hint-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.hint-item.bullish {
+    border-left: 3px solid #089981;
+    background: rgba(8, 153, 129, 0.1);
+}
+
+.hint-item.bearish {
+    border-left: 3px solid #F23645;
+    background: rgba(242, 54, 69, 0.1);
+}
+
+.hint-item.neutral {
+    border-left: 3px solid #787B86;
+    background: rgba(120, 123, 134, 0.1);
+}
+
+.hint-item.info {
+    border-left: 3px solid #667eea;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.hint-emoji {
+    font-size: 1.1rem;
+}
+
+.hint-text {
+    color: #e4e4e7;
+}
+
+.hint-placeholder {
+    color: #a1a1aa;
+    font-style: italic;
+    margin: 0;
+}
+
+.hint-signal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.hint-signal.buy {
+    background: linear-gradient(90deg, rgba(8, 153, 129, 0.2) 0%, rgba(8, 153, 129, 0.05) 100%);
+    border: 1px solid rgba(8, 153, 129, 0.4);
+    color: #089981;
+}
+
+.hint-signal.sell {
+    background: linear-gradient(90deg, rgba(242, 54, 69, 0.2) 0%, rgba(242, 54, 69, 0.05) 100%);
+    border: 1px solid rgba(242, 54, 69, 0.4);
+    color: #F23645;
+}
+
+.hint-signal.wait {
+    background: linear-gradient(90deg, rgba(120, 123, 134, 0.2) 0%, rgba(120, 123, 134, 0.05) 100%);
+    border: 1px solid rgba(120, 123, 134, 0.4);
+    color: #a1a1aa;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #chart {
+        height: 300px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .hint-content {
+        flex-direction: column;
+    }
+}
