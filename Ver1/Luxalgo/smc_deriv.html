@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMC Indicator - Deriv Integration</title>
+    <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+    <link rel="stylesheet" href="css/smc_deriv.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Smart Money Concepts - Deriv</h1>
+            <p class="subtitle">Real-time Market Structure Analysis</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Symbol:</label>
+                <select id="symbolSelect">
+                    <option value="R_100">Volatility 100 Index</option>
+                    <option value="R_75">Volatility 75 Index</option>
+                    <option value="R_50">Volatility 50 Index</option>
+                    <option value="R_25">Volatility 25 Index</option>
+                    <option value="R_10">Volatility 10 Index</option>
+                    <option value="1HZ100V">Volatility 100 (1s)</option>
+                    <option value="frxEURUSD">EUR/USD</option>
+                    <option value="frxGBPUSD">GBP/USD</option>
+                    <option value="frxUSDJPY">USD/JPY</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Timeframe:</label>
+                <select id="granularity">
+                    <option value="60">1 Minute</option>
+                    <option value="300">5 Minutes</option>
+                    <option value="900">15 Minutes</option>
+                    <option value="3600" selected>1 Hour</option>
+                    <option value="14400">4 Hours</option>
+                    <option value="86400">1 Day</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Start Date:</label>
+                <input type="datetime-local" id="startDate">
+            </div>
+            <div class="control-group">
+                <label>End Date:</label>
+                <input type="datetime-local" id="endDate">
+            </div>
+            <div class="control-group">
+                <label>Candles:</label>
+                <input type="number" id="candleCount" value="200" min="50" max="5000">
+            </div>
+            <div class="control-group">
+                <button class="btn btn-primary" id="loadDataBtn">📥 Load Data</button>
+                <button class="btn btn-success" id="subscribeBtn">▶️ Live</button>
+            </div>
+        </div>
+
+        <div class="smc-controls">
+            <label title="Show Higher Highs (HH), Higher Lows (HL), Lower Highs (LH), and Lower Lows (LL)"><input
+                    type="checkbox" id="showSwingPoints" checked> Swing Points</label>
+            <label title="Show Change of Character (CHoCH) and Break of Structure (BOS)"><input type="checkbox"
+                    id="showStructures" checked> CHoCH/BOS</label>
+            <label title="Show Institutional Order Blocks (Supply & Demand Zones)"><input type="checkbox"
+                    id="showOrderBlocks" checked> Order Blocks</label>
+            <label title="Show Fair Value Gaps (Imbalances)"><input type="checkbox" id="showFVG" checked> FVG</label>
+            <label title="Show Equal Highs (EQH) and Equal Lows (EQL) - Liquidity Zones"><input type="checkbox"
+                    id="showEqualHL" checked> EQH/EQL</label>
+            <label title="Enable Click-to-Draw Price Lines"><input type="checkbox" id="userPriceLines" checked> Click
+                Draw</label>
+            <label>Swing Length: <input type="number" id="swingLength" value="50" min="10" max="100"
+                    style="width:60px"></label>
+            <button class="btn btn-secondary" id="analyzeBtn">🔄 Analyze</button>
+            <button class="btn btn-danger" id="clearLinesBtn">🗑️ Clear Lines</button>
+        </div>
+
+        <div class="chart-container">
+            <div id="chart"></div>
+            <div id="status" class="status">Ready</div>
+        </div>
+
+        <!-- Analysis Hint Section -->
+        <div class="analysis-hint" id="analysisHint">
+            <div class="hint-header">
+                <span class="hint-icon">💡</span>
+                <span class="hint-title">วิเคราะห์สภาวะตลาด</span>
+            </div>
+            <div class="hint-content" id="hintContent">
+                <p class="hint-placeholder">โหลดข้อมูลเพื่อดูการวิเคราะห์...</p>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div class="info-card">
+                <h3>Swing Trend</h3>
+                <div class="info-value" id="swingTrend">-</div>
+            </div>
+            <div class="info-card">
+                <h3>Internal Trend</h3>
+                <div class="info-value" id="internalTrend">-</div>
+            </div>
+            <div class="info-card">
+                <h3>Order Blocks</h3>
+                <div id="orderBlockStats">-</div>
+            </div>
+            <div class="info-card">
+                <h3>Recent Structures</h3>
+                <div id="structureStats">-</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/smc/SMCIndicator.standalone.js"></script>
+    <script src="js/smc/DerivSMC.js"></script>
+</body>
+
+</html>
